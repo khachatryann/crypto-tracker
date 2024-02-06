@@ -14,53 +14,47 @@ export const Coins = () => {
     }, [])
 
     return(
-        <>
-        <div className='search__bar'>
-            <input type="search"  placeholder='Search' onChange={(e) => setSearchCoin(e.target.value)}/>
+        <div  className='main__container'>
+            {/* <div className='search__bar'>
+                <input type="search"  placeholder='Search' onChange={(e) => setSearchCoin(e.target.value)}/>
+            </div> */}
+            <table>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>24h %</th>
+                    <th>Market Cap</th>
+                    <th>Volume(24h)</th>
+                    <th>Circulating Supply</th>
+                </tr>
+                {listOfCoins
+                .filter(coin => {
+                    return coin.name.toLowerCase().startsWith(searchCoin.toLocaleLowerCase())
+                })
+                .map((coin) => {
+                    return (
+                            <tr>
+                                <td>{coin.rank}</td>
+                                <td>
+                                    <img src={coin.icon} alt='Icon' />
+                                    <p>{coin.name}</p>
+                                    <p>{coin.symbol}</p>
+                                </td>
+                                <td>{'$' + parseFloat(coin.priceUsd).toFixed(2)}</td>
+                                <td>
+                                    {
+                                        coin.changePercent24Hr > 0 
+                                        ? '+' + parseFloat(coin.changePercent24Hr).toFixed(2) + '%' 
+                                        : (parseFloat(coin.changePercent24Hr).toFixed(2) + '%')
+                                    }
+                                </td>
+                                <td>{'$' + Math.round(coin.marketCapUsd)}</td>
+                                <td>{'$' + Math.round(coin.volumeUsd24Hr)}</td>
+                                <td>{Math.round(coin.supply) + ' ' + coin.symbol}</td>
+                            </tr>   
+                    )})}
+            </table>    
         </div>
-        <div className="header">
-            <ul className='sticky'>
-                <li className='sticky__top'>#</li>
-                <li className='sticky__top'>Name</li>
-                <li className='sticky__top'>Price</li>
-                <li className='sticky__top'>24h %</li>
-                <li className='sticky__top'>Market Cap</li>
-                <li className='sticky__top'>Volume(24h)</li>
-                <li className='sticky__top'>Circulating Supply</li>
-            </ul>
-        </div>
-        <div  className='parent__container'>
-            {listOfCoins
-            .filter(coin => {
-                return coin.name.toLowerCase().startsWith(searchCoin.toLocaleLowerCase())
-            })
-            .map((coin) => {
-                return (
-                    <div className='container' key={coin.id}>
-                        <div className="controller">
-                            <p className='coin__rank'>{coin.rank}</p>
-                            <div className="img__container">
-                                <img src={coin.icon} alt={coin.symbol + " " + 'Icon'} />
-                            </div>
-
-                            <p className='coin__name'>{coin.name}</p>
-                            <p className='coin__symbol'>{coin.symbol}</p>
-
-                            <p className='coin__price'>{'$' + " " + parseFloat(coin.priceUsd).toFixed(2)}</p>
-
-                            <p className='coin__changes'>
-                                {(coin.changePercent24Hr < 0) ? <p style={{color : 'red'}}>{parseFloat(coin.changePercent24Hr).toFixed(2)}%</p> : <p style={{color : 'rgb(25, 193, 25)'}}>{'+' + parseFloat(coin.changePercent24Hr).toFixed(2)}%</p>}
-                            </p>
-
-                            <p className='market__cap'>{Math.round(coin.marketCapUsd)}</p>
-
-                            <p className='coin__volume'>{Math.round(coin.volumeUsd24Hr)}</p>
-
-                            <p className='coin__supply'>{Math.round(coin.supply)}</p>
-                        </div>
-                    </div>
-                )})}    
-        </div>
-        </>
     )
 }
