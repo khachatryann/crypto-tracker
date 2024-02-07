@@ -1,5 +1,7 @@
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
+import info from  "../node_modules/cryptocurrency-icons/32/color/dot.png"
+
 
 
 export const Coins = () => {
@@ -33,19 +35,15 @@ export const Coins = () => {
                 </thead>    
                 {listOfCoins
                 .filter(coin => {
-                    // if (searchCoin.toLocaleLowerCase() ==! coin.name.toLowerCase()) {
-                    //     return (<>{searchCoin.toLocaleLowerCase()}</>)
-                    //     // return coin.name.toLowerCase().startsWith(searchCoin.toLocaleLowerCase()) || coin.symbol.toLowerCase().startsWith(searchCoin.toLocaleLowerCase())
-                    // }
-                    return coin.name.toLowerCase().startsWith(searchCoin.toLocaleLowerCase()) || coin.symbol.toLowerCase().startsWith(searchCoin.toLocaleLowerCase())
+                    return coin.name.toLowerCase().startsWith(searchCoin.toLocaleLowerCase()) || coin.symbol.toLowerCase().startsWith(searchCoin.toLocaleLowerCase())                  
                 })
                 .map((coin) => {
                     return (
-                        <tbody>
+                        <tbody key={coin.id}>
                             <tr>
                                 <td>{coin.rank}</td>
                                 <td>
-                                    <img src={coin} alt='Icon' />
+                                    <img className='icon' src={"images/icons/" + coin.symbol.toLowerCase() + ".png"} alt='Icon' />
                                     <p>{coin.name}</p>
                                     <p>{coin.symbol}</p>    
                                 </td>
