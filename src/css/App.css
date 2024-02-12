@@ -66,7 +66,7 @@ table
 {
   border-spacing: 1;
   border-collapse: collapse;
-  background: white;
+  background: #242582;
   border-radius: 10px;
   overflow: hidden;
   max-width: 90%;
@@ -118,7 +118,6 @@ table tbody tr:last-child {border: 0;}
   position: fixed;
   z-index: 1; 
 }
-
 
 
 .loader-spinner > img

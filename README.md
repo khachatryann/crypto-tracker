@@ -1,11 +1,11 @@
-# Crypto App React :fire:
+# Crypto Prices App React :fire:
 
 ### My Simple Crypto app :heart:
 
 Buld With`
 - React
 -  API (axios)
--  css
+-  css (responsive)
 
 ## How to Run
 
