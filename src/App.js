@@ -1,5 +1,5 @@
 import './App.css';
-import { Coins } from './Coins';
+import { Coins } from './components/Coins';
 
 
 function App() {
